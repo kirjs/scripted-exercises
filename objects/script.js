@@ -11,7 +11,7 @@ var defaultConfig = {
 
 var config = _.merge({}, defaultConfig, game);
 
-var Tile = function Tile(props){
+var Tile = function Tile(props) {
   var config = props.tileConfig;
   var tileSize = props.config.tileSize;
 
@@ -25,31 +25,28 @@ var Tile = function Tile(props){
   };
   var className = 'tile ' + config.image;
 
-  return React.createElement('div', {className: className, style: style});
+  return React.createElement('div', { className: className, style: style });
 };
 
 var World = React.createClass({
   displayName: 'World',
 
-  handleAction: function handleAction(button){
+  handleAction: function handleAction(button) {
     button.action();
     this.setState(config);
   },
-  render: function render(){
+  render: function render() {
     var _this = this;
 
     var config = this.props.config;
-    var tiles = _.map(config.objects, function (object){
-      return React.createElement(Tile, {config: config, tileConfig: object});
+    var tiles = _.map(config.objects, function (object) {
+      return React.createElement(Tile, { config: config, tileConfig: object });
     });
-    var character = React.createElement(Tile, {
-      config: config,
-      tileConfig: config.character
-    });
-    var buttons = _.map(config.buttons, function (button, key){
+    var character = React.createElement(Tile, { config: config, tileConfig: config.character });
+    var buttons = _.map(config.buttons, function (button, key) {
       return React.createElement(
         'button',
-        {key: key, onClick: _this.handleAction.bind(_this, button)},
+        { key: key, onClick: _this.handleAction.bind(_this, button) },
         button.name
       );
     });
@@ -69,4 +66,4 @@ var World = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(World, {config: config}), document.getElementById('container'));
+ReactDOM.render(React.createElement(World, { config: config }), document.getElementById('container'));
