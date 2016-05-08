@@ -1,22 +1,10 @@
-const game = {
-  tileSize: 100,
-  left: 100,
-  top: 100,
-  title: 'Very good game',
-  objects: [
-    {x: 0, y: 0, image: 'roadNS'},
-    {x: 1, y: 0, image: 'roadNS'},
-    {x: 2, y: 0, image: 'roadNS'},
-    {x: 3, y: 0, image: 'crossroadNSW'}
-  ],
-  character: {x: 1, y: 0, image: 'hero'}
-};
-
-
-const defaultConfig = {
-  title: 'title',
-  width: 10,
-  height: 10
+var defaultConfig = {
+  title: '',
+  left: 0,
+  top: 0,
+  tileSize: 20,
+  objects: [],
+  character: {}
 };
 
 const config = _.merge({}, defaultConfig, game);
