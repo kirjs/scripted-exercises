@@ -30,7 +30,7 @@ var Tile = (props)=>{
     height: tileSize,
     left: props.config.left + (config.x - config.y) * tileSize / 2,
     top: props.config.top + (config.x + config.y) * props.config.tileSize / 4,
-    backgroundImage: 'url(http://kirjs.github.io/scripted-exercises/objects/' + config.image + '.png)',
+    backgroundImage: 'url(http://kirjs.github.io/scripted-exercises/objects/images/' + config.image + '.png)',
     backgroundSize: props.config.tileSize
   };
   var className = 'tile ' + config.image;
