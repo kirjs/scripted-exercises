@@ -1,29 +1,25 @@
-const config = {
+'use strict';
+
+var game = {
   tileSize: 100,
   left: 100,
   top: 100,
   title: 'Very good game',
-  objects: [
-    {x: 0, y: 0, image: 'roadNS'},
-    {x: 1, y: 0, image: 'roadNS'},
-    {x: 2, y: 0, image: 'roadNS'},
-    {x: 3, y: 0, image: 'crossroadNSW'}
-  ],
-  character: {x: 1, y: 0, image: 'hero'}
+  objects: [{ x: 0, y: 0, image: 'roadNS' }, { x: 1, y: 0, image: 'roadNS' }, { x: 2, y: 0, image: 'roadNS' }, { x: 3, y: 0, image: 'crossroadNSW' }],
+  character: { x: 1, y: 0, image: 'hero' }
 };
 
-
-const defaultConfig = {
+var defaultConfig = {
   title: 'title',
   width: 10,
   height: 10
 };
 
-const finalConfig = _.merge({}, defaultConfig, config);
+var config = _.merge({}, defaultConfig, game);
 
-var Tile = (props)=>{
-  const config = props.tileConfig;
-  const tileSize = props.config.tileSize;
+var Tile = function Tile(props) {
+  var config = props.tileConfig;
+  var tileSize = props.config.tileSize;
 
   var style = {
     width: tileSize,
@@ -35,36 +31,45 @@ var Tile = (props)=>{
   };
   var className = 'tile ' + config.image;
 
-  return <div className={className} style={style}></div>;
+  return React.createElement('div', { className: className, style: style });
 };
 
-let World = React.createClass({
-  handleAction: function (button){
+var World = React.createClass({
+  displayName: 'World',
+
+  handleAction: function handleAction(button) {
     button.action();
     this.setState(config);
   },
-  render: function (){
+  render: function render() {
+    var _this = this;
+
     var config = this.props.config;
-    var tiles = _.map(config.objects, (object)=>{
-      return <Tile config={config} tileConfig={object}/>
+    var tiles = _.map(config.objects, function (object) {
+      return React.createElement(Tile, { config: config, tileConfig: object });
     });
-    var character = <Tile config={config} tileConfig={config.character}/>;
-    var buttons = _.map(config.buttons, (button, key)=>{
-      return <button key={key} onClick={this.handleAction.bind(this, button)}>
-        {button.name}
-      </button>
+    var character = React.createElement(Tile, { config: config, tileConfig: config.character });
+    var buttons = _.map(config.buttons, function (button, key) {
+      return React.createElement(
+        'button',
+        { key: key, onClick: _this.handleAction.bind(_this, button) },
+        button.name
+      );
     });
 
-    return <div>
-      <h1>{config.title}</h1>
-      {buttons}
-      {tiles}
-      {character}
-    </div>
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'h1',
+        null,
+        config.title
+      ),
+      buttons,
+      tiles,
+      character
+    );
   }
 });
 
-ReactDOM.render(
-  <World config={config}/>,
-  document.getElementById('container')
-);
+ReactDOM.render(React.createElement(World, { config: config }), document.getElementById('container'));
