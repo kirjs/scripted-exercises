@@ -1,0 +1,17 @@
+body {
+    font-family: helvetica-neue, sans-serif;
+    font-weight: 300;
+}
+
+.tile {
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+button {
+    font-size: 20px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    margin-right: 10px;
+}
