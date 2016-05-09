@@ -1,6 +1,9 @@
+var exercise = window.location.hash.replace('#', '') || 'add';
+
+
 var config = {
-  session: 'objects',
-  initialJs: "function add(a,b) {\n  return a+b;\n} ",
+  session: `${exercise}`,
+  initialJs: "// Write you code here",
   files: {
     js: {
       before: [
@@ -12,7 +15,7 @@ var config = {
         "runner/after.js"
       ],
       tests: [
-        "exercises/objects.js"
+        `exercises/${exercise}/tests.js`
       ]
     },
     css: [
@@ -178,7 +181,7 @@ function startCamel(config, saver){
       handleResultChange(result);
     };
 
-    <settings className="cache tests"></settings>.map(runJs);
+    settings.cache.tests.map(runJs);
     settings.cache.jsAfter.map(runJs);
     return iframe;
   }
