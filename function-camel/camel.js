@@ -30,21 +30,22 @@ var config = {
   },
   camel: {
     messages: {
-      start: {
-        image: 'camel.jpg',
-        title: 'Hello, I\'m a function camel'
-      },
       0: {
         image: 'camel.jpg',
-        title: 'Pls start'
+        title: 'Hello, I\'m a JavaScript camel',
+        message: 'Please write some JavaScript so I can eat it!'
+      },
+      50: {
+        image: 'camel-30.jpg',
+        title: '',
+        message: 'Can I have more JavaScript please?'
       },
       100: {
-        image: 'camel.jpg',
+        image: 'camel-happy.jpg',
         title: 'All done',
-        message: 'Please cop'
+        message: 'Please submit the code to google classroom.'
 
       },
-
       error: {
         image: 'error.jpg',
         title: 'Looks like something got broken :('
