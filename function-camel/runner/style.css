@@ -26,3 +26,10 @@
 #mocha .test pre.error {
     display: none;
 }
+
+#mocha {
+    margin: 10px;
+}
+#mocha-stats {
+    display: none;
+}

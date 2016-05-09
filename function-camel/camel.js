@@ -85,6 +85,7 @@ Camel.prototype.render = function (state, message){
 };
 
 Camel.prototype.displayProgress = function (progress){
+  progress = Math.floor(progress);
   var messages = this.config.camel.messages;
   for (let i = progress; i >= 0; i--) {
     if (messages[i]) {
