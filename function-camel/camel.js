@@ -276,6 +276,7 @@ ref.authWithOAuthPopup("google", function (error, authData){
   if (error) {
     console.log("Login Failed!", error);
   } else {
+    document.getElementById('popup-warning').remove();
     startCamel(config, new FirebaseSaver(ref, authData, config.session));
   }
 });
