@@ -3,8 +3,7 @@ describe('Create a function called "min" which takes two numbers and returns the
     expect(min(1,2)).to.equal(1);
   });
   it('min(10,1) should equal 10', function (){
-    expect(min(10, 1)).to.equal(1);
-  });
+    expect(min(10, 1)).to.equal(1);  });
   it('min(12,12) should equal 12', function (){
     expect(min(12,12)).to.equal(12);
   });
@@ -13,7 +12,6 @@ describe('Create a function called "min" which takes two numbers and returns the
 
 
 describe('Create a function called "isEven", which takes a number and returns true if the number is even (you may have to google how to do that)', function (){
-
   it('isEven(2) should equal true', function (){
     expect(isEven(2)).to.equal(true);
   });
