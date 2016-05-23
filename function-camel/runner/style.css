@@ -27,8 +27,9 @@
     display: none;
 }
 
-#mocha {
+#mocha#mocha {
     margin: 10px;
+    margin-top: 50px;
 }
 #mocha-stats {
     display: none;
