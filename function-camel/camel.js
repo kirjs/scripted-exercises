@@ -1,6 +1,6 @@
 var exercise = window.location.hash.replace('#', '') || 'add';
 
-
+var codeMirror;
 var config = {
   session: `${exercise}`,
   initialJs: "// Write you code here",
@@ -90,7 +90,6 @@ Camel.prototype.displayProgress = function (progress){
   for (let i = progress; i >= 0; i--) {
     if (messages[i]) {
       this.render(i);
-
       break;
     }
   }
@@ -195,7 +194,6 @@ function startCamel(config, saver){
 
 
   function startEditor(){
-
     codeMirror = CodeMirror(config.elements.codemirror, {
       value: localStorage.getItem(settings.localStorage.codeKey) || config.initialJs,
       history: history
@@ -219,16 +217,11 @@ function startCamel(config, saver){
   }
 
 
-  function preloadFiles(files){
-    var myHeaders = new Headers();
-
-    var init = {
-      headers: myHeaders
-    };
+  function preloadFiles(files) {
 
     return Promise.all(
       files.map(
-        a=>fetch(a, init)
+        a=>fetch(a, {cache: "no-cache"})
           .then(a=>a.text())));
   }
 

@@ -1,9 +1,10 @@
 'use strict';
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; })();
 
 var exercise = window.location.hash.replace('#', '') || 'add';
 
+var codeMirror;
 var config = {
   session: '' + exercise,
   initialJs: "// Write you code here",
@@ -74,7 +75,6 @@ Camel.prototype.displayProgress = function (progress) {
   for (var i = progress; i >= 0; i--) {
     if (messages[i]) {
       this.render(i);
-
       break;
     }
   }
@@ -173,8 +173,7 @@ function startCamel(config, saver) {
   }
 
   function startEditor() {
-
-    let codeMirror = CodeMirror(config.elements.codemirror, {
+    codeMirror = CodeMirror(config.elements.codemirror, {
       value: localStorage.getItem(settings.localStorage.codeKey) || config.initialJs,
       history: history || config.initialJs,
       mode: "javascript",
@@ -196,14 +195,9 @@ function startCamel(config, saver) {
   }
 
   function preloadFiles(files) {
-    var myHeaders = new Headers();
-
-    var init = {
-      headers: myHeaders
-    };
 
     return Promise.all(files.map(function (a) {
-      return fetch(a, init).then(function (a) {
+      return fetch(a, { cache: "no-cache" }).then(function (a) {
         return a.text();
       });
     }));
