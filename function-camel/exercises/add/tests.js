@@ -3,6 +3,6 @@ describe('Create an "add" function which takes 2 parameters and adds them', func
     expect(add(2, 2)).to.equal(4);
   });
   it('add(10,0) should equal 10', function (){
-    expect(add(2, 2)).to.equal(10);
+    expect(add(10, 0)).to.equal(10);
   });
 });
